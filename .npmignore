@@ -1,0 +1,10 @@
+.idea
+.git
+*.iml
+.gitee
+node_modules
+examples
+
+# Android
+build
+.gradle

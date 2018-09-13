@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>WebView文件</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html {
+      font-family: monospace;
+      font-size: 1.3em;
+      display: flex;
+      min-height: 100%;
+    }
+
+    body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    strong {
+      line-height: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <strong> WebView文件上传以及webView高度自适应demo</strong>
+
+  <form action="#">
+
+    <p>
+      <label>
+        <strong>默认支持所有文件（没有accept）</strong>
+        <br>
+        <input type="file" />
+      </label>
+    </p>
+    <br>
+    <p>
+      <label>
+        <strong>图片</strong>
+        <br>
+        <input type="file" accept="image/*"/>
+      </label>
+    </p>
+    <br>
+    <p>
+      <label>
+        <strong>视频</strong>
+        <br>
+        <input type="file" accept="video/*" />
+      </label>
+    </p>
+    <br>
+    <p>
+      <label>
+        <strong>图片和视频</strong>
+        <br>
+        <input type="file" accept="image/*, video/*" />
+      </label>
+    </p>
+    <br>
+  </form>
+</body>
+
+</html>

@@ -17,7 +17,12 @@
     "react": "^16.3.2"
   },
   "keywords": [
-    "webview"
+    "webview",
+    "file",
+    "react-native",
+    "android",
+    "react-native-webview",
+    "react"
   ],
   "author": "Code4Android",
   "license": "ISC"

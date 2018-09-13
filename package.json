@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://192.168.0.192:8083/ishangzu_web/rreact-native-webview-plugin.git"
+    "url": "https://github.com/xiehui999/react-native-webview-plugin.git"
   },
   "dependencies": {
     "prop-types": "^15.6.0",

@@ -57,9 +57,11 @@ import { WebView } from 'react-native-webview-plugin'
 # 获取webview引用
 
 - ref
+
 ref是rn默认获取引用方式，通过ref使用自定义webview所有方法，目前可以调用goForward，goBack，reload，stopLoading函数，新增函数goBackWithState，该方法可以具备goBack的功能，并同时返回canGoBack属性。
 
 - webviewRef (func)
+
 通过次函数方式获得的引用等同于使用RN原生webview ref
 
 # autoHeight（bool 默认false）

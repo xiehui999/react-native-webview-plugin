@@ -1,71 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>WebView文件</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    html {
-      font-family: monospace;
-      font-size: 1.3em;
-      display: flex;
-      min-height: 100%;
-    }
+    <meta charset="UTF-8">
+    <title>WebView文件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html {
+            font-family: monospace;
+            font-size: 1.3em;
+            display: flex;
+            min-height: 100%;
+        }
 
-    body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+        body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-    strong {
-      line-height: 2;
-    }
-  </style>
+        strong {
+            line-height: 2;
+        }
+    </style>
 </head>
 
 <body>
-  <strong> WebView文件上传以及webView高度自适应demo</strong>
+<p>从React Native接收的消息: 0</p>
+<p>(没有消息)</p>
+<button type="button">
+    给React Native发送消息
+</button>
+<strong> WebView文件上传以及webView高度自适应demo</strong>
 
-  <form action="#">
+<form action="#">
 
     <p>
-      <label>
-        <strong>默认支持所有文件（没有accept）</strong>
-        <br>
-        <input type="file" />
-      </label>
+        <label>
+            <strong>默认支持所有文件（没有accept）</strong>
+            <br>
+            <input type="file"/>
+        </label>
     </p>
     <br>
     <p>
-      <label>
-        <strong>图片</strong>
-        <br>
-        <input type="file" accept="image/*"/>
-      </label>
+        <label>
+            <strong>图片</strong>
+            <br>
+            <input type="file" accept="image/*"/>
+        </label>
     </p>
     <br>
     <p>
-      <label>
-        <strong>视频</strong>
-        <br>
-        <input type="file" accept="video/*" />
-      </label>
+        <label>
+            <strong>视频</strong>
+            <br>
+            <input type="file" accept="video/*"/>
+        </label>
     </p>
     <br>
     <p>
-      <label>
-        <strong>图片和视频</strong>
-        <br>
-        <input type="file" accept="image/*, video/*" />
-      </label>
+        <label>
+            <strong>图片和视频</strong>
+            <br>
+            <input type="file" accept="image/*, video/*"/>
+        </label>
     </p>
     <br>
-  </form>
+</form>
 </body>
-
+<script>
+    var messagesReceivedFromReactNative = 0;
+    document.addEventListener('message', function (e) {
+        messagesReceivedFromReactNative += 1;
+        document.getElementsByTagName('p')[0].innerHTML =
+            '从React Native接收的消息: ' + messagesReceivedFromReactNative;
+        document.getElementsByTagName('p')[1].innerHTML = e.data;
+    });
+    document.getElementsByTagName('button')[0].addEventListener('click', function () {
+        window.postMessage('这是html发送到RN的消息');
+    });
+</script>
 </html>

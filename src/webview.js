@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 const BaseScript =
-  `
+    `
     (function () {
         var height = null;
         function changeHeight() {
@@ -33,7 +33,7 @@ export default class CustomWebView extends Component {
     autoHeight: PropTypes.bool,
     hardwareBack: PropTypes.bool,
     webviewRef: PropTypes.func,
-    isShowSelectButton:PropTypes.bool,
+    isShowSelectButton: PropTypes.bool,
     mixedContentMode: PropTypes.oneOf(['never', 'always', 'compatibility']),
   };
   //mixedContentMode本来默认never
@@ -41,7 +41,7 @@ export default class CustomWebView extends Component {
     autoHeight: false,
     hardwareBack: true,
     mixedContentMode: 'always',
-    isShowSelectButton:true,
+    isShowSelectButton: true,
   };
   state = {
     contentHeight: null,
@@ -71,35 +71,34 @@ export default class CustomWebView extends Component {
 
   render() {
     const {webviewRef, style, autoHeight, injectedJavaScript, javaScriptEnabled, ...props} = this.props;
-    console.log("webview props:",this.props);
     const Props = {};
     let heightStyle = {};
     if (autoHeight) {
-      Props.injectedJavaScript = BaseScript + (injectedJavaScript ? injectedJavaScript : "");
+      Props.injectedJavaScript = (injectedJavaScript ? `\n ${injectedJavaScript}` : "") + BaseScript;
       Props.javaScriptEnabled = true;
       heightStyle = this.state.contentHeight ? {height: this.state.contentHeight} : {};
     } else {
       if (javaScriptEnabled != undefined) Props.javaScriptEnabled = javaScriptEnabled;
       if (injectedJavaScript) {
-        Props.injectedJavaScript = BaseScript;
+        Props.injectedJavaScript = (injectedJavaScript ? `\n ${injectedJavaScript}` : "") + BaseScript;
         Props.javaScriptEnabled = true
       }
     }
     return (
-      <WebView
-        ref={(ref) => {
-          this.webview = ref;
-          if (webviewRef) {
-            webviewRef(ref);
-          }
-        }}
-        {...props}
-        style={[style, heightStyle]}
-        {...Props}
-        onNavigationStateChange={this._onNavigationStateChange}
-        onMessage={this._onMessage}
-        nativeConfig={this.getNativeConfig()}
-      />
+        <WebView
+            ref={(ref) => {
+              this.webview = ref;
+              if (webviewRef) {
+                webviewRef(ref);
+              }
+            }}
+            {...props}
+            style={[style, heightStyle]}
+            {...Props}
+            onNavigationStateChange={this._onNavigationStateChange}
+            onMessage={this._onMessage}
+            nativeConfig={this.getNativeConfig()}
+        />
     );
   }
 
@@ -168,15 +167,15 @@ export default class CustomWebView extends Component {
     return {
       component: RCTCustomWebView,
       props: {
-        isShowSelectButton:this.props.isShowSelectButton
+        isShowSelectButton: this.props.isShowSelectButton
       }
     };
   }
 }
 
 const RCTCustomWebView = requireNativeComponent(
-  "CustomWebView",
-  CustomWebView,
-  WebView.extraNativeComponentConfig
+    "CustomWebView",
+    CustomWebView,
+    WebView.extraNativeComponentConfig
 );
 

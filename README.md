@@ -49,7 +49,7 @@ project(':react-native-webview-plugin').projectDir = new File(settingsDir, '../.
 
 ## 引入
 ```
-import { WebView } from 'react-native-webview-plugin'
+import  WebView  from 'react-native-webview-plugin'
 ```
 
 该webview具备ReactNative中webview的所有功能，并新增如下属性和方法
